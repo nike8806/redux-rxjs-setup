@@ -4,11 +4,14 @@ export const FETCH_DATA = "FETCH_DATA";
 export const SEARCH = "SEARCH";
 export const FETCHED_FAILED = "FETCHED_FAILED";
 export const CANCEL = 'CANCEL';
+export const RANDOM = 'RANDOM';
+
 export const RESET = 'RESET';
 
 
 
 export function fetchFulfilled(beers) {
+    console.log(beers);
     return {
         type: FETCH_FULFILLED,
         payload: beers,
@@ -51,6 +54,13 @@ export function search(text) {
     return {
         type: SEARCH,
         payload: text
+    }
+}
+
+
+export function random() {
+    return {
+        type: RANDOM,
     }
 }
 

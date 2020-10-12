@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import BeersList from "./BeersList";
-import {search, fetchData, cancel} from '../reducers/beersActions';
+import {search, fetchData, cancel, random} from '../reducers/beersActions';
 import { setConfig } from "../reducers/configActions";
 
 function Beers(props) {
-  const { data, status, search, fetchData, messages, cancel, config, setConfig } = props;
+  const { data, status, search, fetchData, messages, random, cancel, config, setConfig } = props;
   const onChangeSearch = (ev) => {
     search(ev.target.value)
   }
@@ -31,6 +31,13 @@ function Beers(props) {
           type='text'
           placeholder='Search beers'
           onChange={onChangeSearch}
+        />
+
+
+        <input 
+          type='button'
+          value='Random'
+          onClick={random}
         />
         {status === "pending" && (
           <>
@@ -71,4 +78,4 @@ function mapState(state) {
   }
 }
 
-export default connect(mapState, {search, fetchData, cancel, setConfig})(Beers);
+export default connect(mapState, {search, fetchData, cancel, setConfig, random})(Beers);
