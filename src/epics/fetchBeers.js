@@ -1,4 +1,3 @@
-import {ajax} from 'rxjs/ajax';
 import {concat, forkJoin, fromEvent, merge, of, race}  from 'rxjs';
 import {ofType} from 'redux-observable'
 import {ignoreElements, map, tap, switchMap, debounceTime, filter, catchError, delay, takeUntil, mapTo, withLatestFrom, pluck} from 'rxjs/operators';
@@ -6,7 +5,7 @@ import { setStatus, fetchFulfilled, FETCH_DATA, SEARCH, fetchFailed, CANCEL, res
 // const search = (term, apiBase, perPage) => `${apiBase}?beer_name=${encodeURIComponent(term)}&per_page=${perPage}`;
 const random = (apiBase) => `${apiBase}/random`;
 
-export function fetchBeersEpic(action$, state$) {
+export function fetchBeersEpic(action$, state$,{getJSON, document}) {
     return action$.pipe(
       ofType(RANDOM),
       debounceTime(500),
@@ -18,7 +17,7 @@ export function fetchBeersEpic(action$, state$) {
       switchMap(([{ payload }, config]) => {
 
         const reqs = [...Array(config.perPage)].map(()=>{
-            return ajax.getJSON(random(config.apiBase)).pipe(pluck(0));
+            return getJSON(random(config.apiBase)).pipe(pluck(0));
         })
 
         const blocker$ = merge(
