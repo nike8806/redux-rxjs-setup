@@ -1,0 +1,40 @@
+@import '../../../../styles/globals';
+
+$animation: all 200ms ease-in-out;
+
+.button--switch {
+  width: 5.5rem;
+  height: 3.1rem;
+  padding: 0;
+  background-image: url(/images/button-switch-argonaut-off-normal.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  display: block;
+  color: $gray9;
+  cursor: pointer;
+  transition: $animation;
+
+  &:disabled {
+    opacity: 80%;
+    cursor: not-allowed;
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    outline: inherit;
+    background-image: url(/images/button-switch-argonaut-off-focus.svg),
+  }
+
+  &[aria-checked="true"] {
+    background-image: url(/images/button-switch-argonaut-on-normal.svg);
+
+    &:focus,
+    &:hover,
+    &:active {
+      background-image: url(/images/button-switch-argonaut-on-focus.svg),
+    }
+  }
+}

@@ -1,0 +1,6 @@
+@import '../../../styles/globals';
+
+.title {
+    @include fontTitleCopy;
+    margin: 2.4rem 0;
+}

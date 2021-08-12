@@ -1,0 +1,43 @@
+@import '../../../../styles/globals';
+
+$animation: all 200ms ease-in-out;
+
+.button--primary {
+  @include fontFormControl;
+  width: 100%;
+  height: 4.8rem;
+  margin: 1.6rem 0 0 0;
+  padding: 0 2.4rem;
+  background: darken($toggleBlue, 5%);
+  border: solid 0.1rem transparent;
+  border-radius: 0.4rem;
+  display: block;
+  color: $white;
+  cursor: pointer;
+  outline: none;
+  transition: $animation;
+  text-align: center;
+  justify-content: center;
+  font-family: 'Avenir-Heavy';
+  text-transform: uppercase;
+
+  &:focus,
+  &:hover,
+  &:active {
+    background: $toggleBlue;
+  }
+
+  &:focus {
+    border-color: $white;
+  }
+
+  &:disabled {
+    opacity: 80%;
+    cursor: not-allowed;
+    &:focus,
+    &:hover,
+    &:active {
+      background: darken($toggleBlue, 5%);
+    }
+  }
+}

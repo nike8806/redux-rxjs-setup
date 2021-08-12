@@ -1,0 +1,19 @@
+@import '../../../../styles/globals';
+
+$animation: all 200ms ease-in-out;
+
+.progress {
+  width: 100%;
+  height: 1.75rem;
+  background: $gray6;
+  border-radius: 0.4rem;
+  position: relative;
+  overflow: hidden;
+
+  &--bar {
+    border-radius: 0.4rem;
+    height: 100%;
+    background: $primary;
+    transition: $animation;
+  }
+ }

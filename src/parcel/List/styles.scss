@@ -1,0 +1,122 @@
+@import '../../../styles/globals';
+
+.list {
+  padding: 0;
+
+  .item {
+    @include fontH4;
+    margin: 2.2rem 0 0 0;
+    padding: 1.7rem 2.4rem;
+    list-style-type: none;
+    color: $gray9;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    position: relative;
+
+    .label--primary {
+      @include fontH4;
+      color: $gray9;
+    }
+
+    .label--secondary {
+      @include fontH4;
+      float: right;
+      color: $gray9;
+      padding: 0 3.6rem 0 0;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      left: 0;
+      width: 0.27rem;
+      height: 6rem;
+      background-color: $white;
+      border-radius: 0.4rem 0 0 0.4rem;
+      opacity: 0;
+    }
+
+    &:after {
+      position: absolute;
+      top: 1.4rem;
+      right: 0;
+      content: url('/images/icon-caret-right-white-60-pct.svg');
+    }
+
+    &:hover {
+      background-color: $white;
+      color: $black;
+
+      .label--primary,
+      .label--secondary {
+        color: $black;
+      }
+
+      &:after{
+        content: url('/images/icon-caret-right-black-60-pct.svg');
+      }
+    }
+
+    &.disabled {
+      opacity: 0.8;
+
+      &:after {
+        display: none;
+      }
+
+      &:hover {
+        background-color: $gray6;
+        cursor: not-allowed;
+
+        .label--primary,
+        .label--secondary {
+          color: $gray9;
+        }
+      }
+
+      &.selected {
+        &:before {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    &.selected {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.small {
+    .item {
+      @include fontBodyCopy;
+
+      .label--primary {
+        @include fontBodyCopy;
+      }
+
+      .label--secondary {
+        @include fontBodyCopy;
+        padding: 0 2.4rem 0 0;
+      }
+
+      &:after {
+        top: 1.2rem;
+        right: 1.2rem;
+        content: url('/images/icon-caret-right-white-60-pct-small.svg');
+      }
+
+      &:before {
+        height: 3rem;
+      }
+
+      &:hover {
+        &:after {
+          content: url('/images/icon-caret-right-black-60-pct-small.svg');
+        }
+      }
+    }
+  }
+}
